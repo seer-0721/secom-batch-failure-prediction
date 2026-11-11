@@ -1,0 +1,591 @@
+{
+  "dataset": {
+    "batches": 1567,
+    "sensors_raw": 590,
+    "fail_batches": 104,
+    "fail_rate": 0.06636885768985322,
+    "time_range": [
+      "2008-07-19",
+      "2008-10-17"
+    ],
+    "missing_rate": 0.04537548808583821
+  },
+  "screening": {
+    "dropped_high_missing_gt_50pct": 24,
+    "dropped_constant": 122,
+    "after_cleaning": 445,
+    "note": "相关性剔除(>0.95)与重要性排序在每一折内重新做，数值见 folds[].n_sensors_kept",
+    "candidate_ks": [
+      20,
+      50
+    ],
+    "selected_k": 50,
+    "selection_rule": "早期三折折外 PR-AUC 最大",
+    "early_block_pr_auc": {
+      "20": 0.10252014623844755,
+      "50": 0.10537841809495098
+    }
+  },
+  "protocol": {
+    "primary": "expanding-window walk-forward, 6 folds",
+    "control_regimes": [
+      "sliding window W=350",
+      "single far holdout last 30%",
+      "stratified random 70/30 x10"
+    ],
+    "per_fold_pipeline": "中位数填补/标准化/相关性剔除/RF 重要性排序 全部只用该折训练段",
+    "threshold": "argmax F2 on early blocks (folds 1-3) out-of-fold predictions",
+    "imbalance_handling": "class_weight only; 不做切分前重采样",
+    "early_blocks": [
+      229,
+      898
+    ],
+    "late_blocks": [
+      898,
+      1567
+    ]
+  },
+  "walkforward": {
+    "expanding": {
+      "folds": [
+        {
+          "fold": 1,
+          "train_batches": 229,
+          "test_batches": 223,
+          "test_fail": 27,
+          "n_sensors_kept": 277,
+          "roc_auc_k20": 0.6341647770219198,
+          "pr_auc_k20": 0.19995089007357214,
+          "roc_auc_k50": 0.5978835978835979,
+          "pr_auc_k50": 0.16940215988399393
+        },
+        {
+          "fold": 2,
+          "train_batches": 452,
+          "test_batches": 223,
+          "test_fail": 8,
+          "n_sensors_kept": 267,
+          "roc_auc_k20": 0.5569767441860465,
+          "pr_auc_k20": 0.05209212967205297,
+          "roc_auc_k50": 0.5348837209302326,
+          "pr_auc_k50": 0.05915984291623716
+        },
+        {
+          "fold": 3,
+          "train_batches": 675,
+          "test_batches": 223,
+          "test_fail": 6,
+          "n_sensors_kept": 273,
+          "roc_auc_k20": 0.48003072196620583,
+          "pr_auc_k20": 0.03841545122066344,
+          "roc_auc_k50": 0.5353302611367128,
+          "pr_auc_k50": 0.10959628643322836
+        },
+        {
+          "fold": 4,
+          "train_batches": 898,
+          "test_batches": 223,
+          "test_fail": 6,
+          "n_sensors_kept": 272,
+          "roc_auc_k20": 0.7864823348694316,
+          "pr_auc_k20": 0.09734518577397835,
+          "roc_auc_k50": 0.6758832565284179,
+          "pr_auc_k50": 0.09455073655866518
+        },
+        {
+          "fold": 5,
+          "train_batches": 1121,
+          "test_batches": 223,
+          "test_fail": 19,
+          "n_sensors_kept": 275,
+          "roc_auc_k20": 0.5900412796697626,
+          "pr_auc_k20": 0.13713768736956997,
+          "roc_auc_k50": 0.5683694530443756,
+          "pr_auc_k50": 0.12245561140628568
+        },
+        {
+          "fold": 6,
+          "train_batches": 1344,
+          "test_batches": 223,
+          "test_fail": 7,
+          "n_sensors_kept": 273,
+          "roc_auc_k20": 0.7976190476190477,
+          "pr_auc_k20": 0.2505376381387163,
+          "roc_auc_k50": 0.7493386243386243,
+          "pr_auc_k50": 0.4527535285959043
+        }
+      ],
+      "per_k": {
+        "20": {
+          "pooled_roc_auc": 0.6052845308354539,
+          "pooled_pr_auc": 0.09336419872897347,
+          "mean_fold_roc_auc": 0.6408858175554024,
+          "mean_fold_pr_auc": 0.12924649704142552,
+          "n_scored": 1338
+        },
+        "50": {
+          "pooled_roc_auc": 0.6286534192430558,
+          "pooled_pr_auc": 0.09828126145880295,
+          "mean_fold_roc_auc": 0.6102814856436601,
+          "mean_fold_pr_auc": 0.1679863609657191,
+          "n_scored": 1338
+        }
+      },
+      "sensor_frequency": {
+        "20": {
+          "s122": 6,
+          "s000": 4,
+          "s489": 1,
+          "s205": 4,
+          "s333": 1,
+          "s200": 1,
+          "s076": 2,
+          "s270": 1,
+          "s019": 5,
+          "s131": 2,
+          "s130": 5,
+          "s059": 5,
+          "s484": 1,
+          "s029": 1,
+          "s040": 3,
+          "s012": 1,
+          "s150": 1,
+          "s017": 1,
+          "s107": 1,
+          "s155": 2,
+          "s144": 2,
+          "s064": 5,
+          "s021": 5,
+          "s128": 2,
+          "s125": 2,
+          "s169": 1,
+          "s102": 2,
+          "s090": 1,
+          "s225": 1,
+          "s214": 1,
+          "s126": 4,
+          "s031": 2,
+          "s176": 1,
+          "s065": 4,
+          "s247": 4,
+          "s562": 2,
+          "s132": 1,
+          "s175": 2,
+          "s033": 4,
+          "s143": 1,
+          "s210": 2,
+          "s024": 2,
+          "s053": 1,
+          "s028": 3,
+          "s510": 3,
+          "s103": 3,
+          "s587": 1,
+          "s063": 1,
+          "s129": 2,
+          "s468": 1,
+          "s172": 2,
+          "s573": 1,
+          "s124": 1,
+          "s078": 1,
+          "s153": 1
+        },
+        "50": {
+          "s122": 6,
+          "s000": 5,
+          "s489": 1,
+          "s205": 6,
+          "s333": 1,
+          "s200": 2,
+          "s076": 2,
+          "s270": 4,
+          "s019": 6,
+          "s131": 3,
+          "s130": 6,
+          "s059": 5,
+          "s484": 1,
+          "s029": 1,
+          "s040": 5,
+          "s012": 1,
+          "s150": 1,
+          "s017": 2,
+          "s107": 1,
+          "s155": 4,
+          "s127": 3,
+          "s570": 1,
+          "s151": 1,
+          "s268": 1,
+          "s345": 1,
+          "s145": 3,
+          "s290": 3,
+          "s181": 2,
+          "s014": 4,
+          "s218": 2,
+          "s119": 1,
+          "s137": 4,
+          "s336": 1,
+          "s548": 1,
+          "s472": 1,
+          "s039": 1,
+          "s037": 5,
+          "s207": 1,
+          "s030": 2,
+          "s061": 1,
+          "s579": 1,
+          "s144": 3,
+          "s562": 5,
+          "s156": 1,
+          "s439": 1,
+          "s586": 1,
+          "s091": 3,
+          "s160": 1,
+          "s028": 4,
+          "s247": 6,
+          "s064": 5,
+          "s021": 5,
+          "s128": 5,
+          "s125": 5,
+          "s169": 1,
+          "s102": 5,
+          "s090": 3,
+          "s225": 2,
+          "s214": 1,
+          "s126": 5,
+          "s031": 4,
+          "s176": 1,
+          "s202": 1,
+          "s045": 3,
+          "s180": 3,
+          "s152": 1,
+          "s022": 3,
+          "s086": 1,
+          "s488": 1,
+          "s316": 2,
+          "s033": 5,
+          "s175": 5,
+          "s079": 5,
+          "s510": 5,
+          "s117": 1,
+          "s146": 2,
+          "s496": 1,
+          "s187": 1,
+          "s135": 3,
+          "s250": 1,
+          "s133": 2,
+          "s065": 4,
+          "s132": 1,
+          "s143": 3,
+          "s210": 4,
+          "s024": 2,
+          "s053": 1,
+          "s267": 1,
+          "s058": 3,
+          "s041": 3,
+          "s182": 3,
+          "s038": 2,
+          "s048": 1,
+          "s103": 4,
+          "s173": 1,
+          "s377": 1,
+          "s163": 3,
+          "s278": 1,
+          "s166": 1,
+          "s587": 3,
+          "s063": 3,
+          "s153": 3,
+          "s563": 3,
+          "s172": 3,
+          "s468": 3,
+          "s385": 3,
+          "s573": 3,
+          "s431": 2,
+          "s161": 1,
+          "s213": 2,
+          "s129": 2,
+          "s078": 2,
+          "s112": 2,
+          "s460": 1,
+          "s138": 1,
+          "s055": 1,
+          "s203": 1,
+          "s239": 1,
+          "s124": 1,
+          "s121": 1,
+          "s032": 1,
+          "s430": 1,
+          "s433": 1
+        }
+      }
+    },
+    "sliding": {
+      "folds": [
+        {
+          "fold": 1,
+          "train_batches": 229,
+          "test_batches": 223,
+          "test_fail": 27,
+          "n_sensors_kept": 277,
+          "roc_auc_k20": 0.6341647770219198,
+          "pr_auc_k20": 0.19995089007357214,
+          "roc_auc_k50": 0.5978835978835979,
+          "pr_auc_k50": 0.16940215988399393
+        },
+        {
+          "fold": 2,
+          "train_batches": 350,
+          "test_batches": 223,
+          "test_fail": 8,
+          "n_sensors_kept": 270,
+          "roc_auc_k20": 0.40813953488372096,
+          "pr_auc_k20": 0.03208949549529798,
+          "roc_auc_k50": 0.3866279069767442,
+          "pr_auc_k50": 0.03061623184372827
+        },
+        {
+          "fold": 3,
+          "train_batches": 350,
+          "test_batches": 223,
+          "test_fail": 6,
+          "n_sensors_kept": 270,
+          "roc_auc_k20": 0.4930875576036866,
+          "pr_auc_k20": 0.19062868467988947,
+          "roc_auc_k50": 0.5867895545314901,
+          "pr_auc_k50": 0.05297837450615228
+        },
+        {
+          "fold": 4,
+          "train_batches": 350,
+          "test_batches": 223,
+          "test_fail": 6,
+          "n_sensors_kept": 267,
+          "roc_auc_k20": 0.5414746543778802,
+          "pr_auc_k20": 0.03370039556620237,
+          "roc_auc_k50": 0.5268817204301075,
+          "pr_auc_k50": 0.030947544761847752
+        },
+        {
+          "fold": 5,
+          "train_batches": 350,
+          "test_batches": 223,
+          "test_fail": 19,
+          "n_sensors_kept": 284,
+          "roc_auc_k20": 0.5629514963880289,
+          "pr_auc_k20": 0.11016622339549959,
+          "roc_auc_k50": 0.5002579979360164,
+          "pr_auc_k50": 0.08616262591045305
+        },
+        {
+          "fold": 6,
+          "train_batches": 350,
+          "test_batches": 223,
+          "test_fail": 7,
+          "n_sensors_kept": 277,
+          "roc_auc_k20": 0.6521164021164021,
+          "pr_auc_k20": 0.08798471608590418,
+          "roc_auc_k50": 0.623015873015873,
+          "pr_auc_k50": 0.3447965003473138
+        }
+      ],
+      "per_k": {
+        "20": {
+          "pooled_roc_auc": 0.5883263847528291,
+          "pooled_pr_auc": 0.07631027883147025,
+          "mean_fold_roc_auc": 0.548655737065273,
+          "mean_fold_pr_auc": 0.10908673421606097,
+          "n_scored": 1338
+        },
+        "50": {
+          "pooled_roc_auc": 0.5588174779360009,
+          "pooled_pr_auc": 0.085205345691785,
+          "mean_fold_roc_auc": 0.5369094417956383,
+          "mean_fold_pr_auc": 0.1191505728755815,
+          "n_scored": 1338
+        }
+      }
+    }
+  },
+  "final_model": {
+    "k": 50,
+    "threshold": 0.207175466169886,
+    "oof_f2_early": 0.31982942430703626,
+    "late_metrics": {
+      "n": 669,
+      "n_fail": 32,
+      "roc_auc": 0.599293563579278,
+      "pr_auc": 0.1570654121562315
+    },
+    "late_at_threshold": {
+      "threshold": 0.207175466169886,
+      "precision": 0.14,
+      "recall": 0.21875,
+      "f1": 0.17073170731707318,
+      "tp": 7,
+      "fp": 43,
+      "fn": 25,
+      "tn": 594,
+      "flagged": 50,
+      "flag_rate": 0.07473841554559044
+    },
+    "late_ci95": {
+      "pr_auc": [
+        0.06539171648053518,
+        0.30178679866449876
+      ],
+      "roc_auc": [
+        0.4822935171488797,
+        0.7189449947612027
+      ]
+    }
+  },
+  "control_protocols": {
+    "far_holdout": {
+      "protocol": "single holdout: train 前 1097 批 / test 后 470 批",
+      "roc_auc": 0.5795218295218295,
+      "pr_auc": 0.07144983982159825,
+      "n_test": 470,
+      "n_test_fail": 26
+    },
+    "random_split": {
+      "n_repeats": 10,
+      "note": "随机分层 70/30，全部 445 个传感器，RandomForest；同清洗流程",
+      "mean": {
+        "roc_auc": 0.7367008797653959,
+        "pr_auc": 0.1883355763714108
+      },
+      "std": {
+        "roc_auc": 0.04039818558521639,
+        "pr_auc": 0.035795718240959284
+      },
+      "runs": [
+        {
+          "roc_auc": 0.737683284457478,
+          "pr_auc": 0.1531320314992778
+        },
+        {
+          "roc_auc": 0.7582111436950146,
+          "pr_auc": 0.2146336832723647
+        },
+        {
+          "roc_auc": 0.737683284457478,
+          "pr_auc": 0.24309101487038345
+        },
+        {
+          "roc_auc": 0.7250733137829912,
+          "pr_auc": 0.16208664688425448
+        },
+        {
+          "roc_auc": 0.708357771260997,
+          "pr_auc": 0.17741832180077247
+        },
+        {
+          "roc_auc": 0.7592375366568915,
+          "pr_auc": 0.2402745324423827
+        },
+        {
+          "roc_auc": 0.8010263929618769,
+          "pr_auc": 0.1990823556652847
+        },
+        {
+          "roc_auc": 0.6374633431085044,
+          "pr_auc": 0.12758418430487523
+        },
+        {
+          "roc_auc": 0.752932551319648,
+          "pr_auc": 0.19908655462131009
+        },
+        {
+          "roc_auc": 0.7493401759530791,
+          "pr_auc": 0.1669664383532022
+        }
+      ]
+    },
+    "expanding_pooled": {
+      "pooled_roc_auc": 0.6286534192430558,
+      "pooled_pr_auc": 0.09828126145880295,
+      "mean_fold_roc_auc": 0.6102814856436601,
+      "mean_fold_pr_auc": 0.1679863609657191,
+      "n_scored": 1338
+    },
+    "sliding_pooled": {
+      "pooled_roc_auc": 0.5588174779360009,
+      "pooled_pr_auc": 0.085205345691785,
+      "mean_fold_roc_auc": 0.5369094417956383,
+      "mean_fold_pr_auc": 0.1191505728755815,
+      "n_scored": 1338
+    }
+  },
+  "cost_sensitivity": [
+    {
+      "ratio": 1,
+      "threshold": 0.45429438009813916,
+      "fn": 32,
+      "fp": 0,
+      "cost_per_batch": 0.04783258594917788,
+      "cost_at_0.5": 0.04783258594917788,
+      "reduction_pct": 0.0
+    },
+    {
+      "ratio": 2,
+      "threshold": 0.45429438009813916,
+      "fn": 32,
+      "fp": 0,
+      "cost_per_batch": 0.09566517189835576,
+      "cost_at_0.5": 0.09566517189835576,
+      "reduction_pct": 0.0
+    },
+    {
+      "ratio": 5,
+      "threshold": 0.4093797834428878,
+      "fn": 32,
+      "fp": 0,
+      "cost_per_batch": 0.23916292974588937,
+      "cost_at_0.5": 0.23916292974588937,
+      "reduction_pct": 0.0
+    },
+    {
+      "ratio": 10,
+      "threshold": 0.3146246887734339,
+      "fn": 31,
+      "fp": 2,
+      "cost_per_batch": 0.4663677130044843,
+      "cost_at_0.5": 0.47832585949177875,
+      "reduction_pct": 2.499999999999992
+    },
+    {
+      "ratio": 20,
+      "threshold": 0.207175466169886,
+      "fn": 25,
+      "fp": 43,
+      "cost_per_batch": 0.8116591928251121,
+      "cost_at_0.5": 0.9566517189835575,
+      "reduction_pct": 15.156249999999993
+    },
+    {
+      "ratio": 50,
+      "threshold": 0.10131057244971427,
+      "fn": 5,
+      "fp": 500,
+      "cost_per_batch": 1.1210762331838564,
+      "cost_at_0.5": 2.391629297458894,
+      "reduction_pct": 53.125000000000014
+    },
+    {
+      "ratio": 100,
+      "threshold": 0.10131057244971427,
+      "fn": 5,
+      "fp": 500,
+      "cost_per_batch": 1.4947683109118086,
+      "cost_at_0.5": 4.783258594917788,
+      "reduction_pct": 68.75
+    }
+  ],
+  "figures": [
+    "/home/inubashiri/proj/oracle/application/proj/secom-yield/figures/fig1_data_overview.png",
+    "/home/inubashiri/proj/oracle/application/proj/secom-yield/figures/fig2_walkforward_folds.png",
+    "/home/inubashiri/proj/oracle/application/proj/secom-yield/figures/fig3_roc_pr_late.png",
+    "/home/inubashiri/proj/oracle/application/proj/secom-yield/figures/fig4_threshold_tradeoff.png",
+    "/home/inubashiri/proj/oracle/application/proj/secom-yield/figures/fig5_protocol_comparison.png",
+    "/home/inubashiri/proj/oracle/application/proj/secom-yield/figures/fig6_sensor_stability.png",
+    "/home/inubashiri/proj/oracle/application/proj/secom-yield/figures/fig7_cost_ratio.png"
+  ],
+  "elapsed_sec": 117.1
+}
